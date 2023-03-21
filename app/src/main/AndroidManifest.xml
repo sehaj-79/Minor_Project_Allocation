@@ -21,9 +21,6 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".RequestProjectActivity"
-            android:exported="false" />
-        <activity
             android:name=".ChatActivity"
             android:exported="false" />
         <activity
