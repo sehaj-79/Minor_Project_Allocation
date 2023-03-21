@@ -26,7 +26,7 @@ import Model.Users;
 public class MainActivity extends AppCompatActivity {
 
     ImageView imageView,logout;
-    TextView tv_name,tv_designation,tv_faculty,tv_school,tv_department;
+    TextView tv_name,tv_designation,tv_faculty,tv_school,tv_department, home_designation, tv_phoneno, tv_expertise;
     ConstraintLayout home_splash,home_page;
     FrameLayout class_info,chats,about;
     FirebaseUser firebaseUser;
@@ -49,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
         tv_faculty = findViewById(R.id.tv_faculty);
         tv_department = findViewById(R.id.tv_department);
         tv_school = findViewById(R.id.tv_school);
+        tv_expertise=findViewById(R.id.tv_expertise);
+        home_designation=findViewById(R.id.home_designation);
+
+        tv_phoneno=findViewById(R.id.tv_phoneno);
+
         class_info = findViewById(R.id.classinfo);
         chats = findViewById(R.id.chats);
         about = findViewById(R.id.about);
@@ -101,9 +106,14 @@ public class MainActivity extends AppCompatActivity {
                 tv_name.setText(user.getFname());
                 tv_designation.setText(user.getFid());
 
-                tv_department.setText("Department: CSE ");
+                tv_department.setText("Department: "+user.getDepartment());
                 tv_faculty.setText("Faculty Id: "+user.getFid());
                 tv_school.setText("Email: "+user.getEmail());
+                tv_phoneno.setText("Phone No. : "+user.getPhoneNo());
+                home_designation.setText(("Designation : "+user.getDesignation()));
+                tv_expertise.setText(("Field of Expertise : "+user.getExpertise()));
+
+
 
 
                 /*if(user.getGender().equals("Male"))

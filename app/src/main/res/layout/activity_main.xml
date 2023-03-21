@@ -322,6 +322,42 @@
             app:layout_constraintStart_toStartOf="@id/home_line1"
             app:layout_constraintTop_toBottomOf="@+id/tv_school" />
 
+        <TextView
+            android:id="@+id/tv_phoneno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="12dp"
+            android:paddingRight="20dp"
+            android:textColor="#212121"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="@id/home_line1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_department" />
+
+        <TextView
+            android:id="@+id/home_designation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="12dp"
+            android:paddingRight="20dp"
+            android:textColor="#212121"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="@id/home_line1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phoneno" />
+
+        <TextView
+            android:id="@+id/tv_expertise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="12dp"
+            android:paddingRight="20dp"
+            android:textColor="#212121"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="@id/home_line1"
+            app:layout_constraintTop_toBottomOf="@+id/home_designation" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

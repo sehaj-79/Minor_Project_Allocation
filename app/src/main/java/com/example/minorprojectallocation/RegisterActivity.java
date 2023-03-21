@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    TextInputEditText editTextFacultyName, editTextFacultyId, editTextEmail, editTextPassword;
+    TextInputEditText editTextFacultyName, editTextFacultyId, editTextEmail, editTextPassword, editTextDepartment, editTextPhoneNo, editTextDesignation, editTextFieldOfExpertise ;
     Button buttonReg;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
@@ -54,6 +54,10 @@ public class RegisterActivity extends AppCompatActivity {
         editTextFacultyId = findViewById(R.id.fac_id);
         editTextFacultyName = findViewById(R.id.fac_name);
         editTextPassword = findViewById(R.id.password);
+        editTextDepartment= findViewById(R.id.department);
+        editTextPhoneNo= findViewById(R.id.phoneno);
+        editTextDesignation=findViewById(R.id.designation);
+        editTextFieldOfExpertise=findViewById(R.id.expertise);
         buttonReg = findViewById(R.id.register_button);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.loginNow);
@@ -71,11 +75,16 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String fac_name, fac_id, email, password;
+                String fac_name, fac_id, email, password, department, phoneno, expertise, designation;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
                 fac_id = String.valueOf(editTextFacultyId.getText());
                 fac_name = String.valueOf(editTextFacultyName.getText());
+                department= String.valueOf(editTextDepartment.getText());
+                phoneno= String.valueOf(editTextPhoneNo.getText());
+                expertise= String.valueOf(editTextFieldOfExpertise.getText());
+                designation=String.valueOf(editTextDesignation.getText());
+
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(RegisterActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
@@ -113,6 +122,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     hashMap.put("Fid",fac_id);
                                     hashMap.put("Fname",fac_name);
                                     hashMap.put("Email",email);
+                                    hashMap.put("Department",department);
+                                    hashMap.put("PhoneNo",phoneno);
+                                    hashMap.put("Expertise",expertise);
+                                    hashMap.put("Designation",designation);
 
 
                                     referenceProfile.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {

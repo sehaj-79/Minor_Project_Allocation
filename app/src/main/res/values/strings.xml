@@ -13,4 +13,8 @@
     <string name="click_to_login">Click to Login.</string>
     <string name="click_to_register">Click to Register</string>
     <string name="project_list">Project List</string>
+    <string name="department">Department</string>
+    <string name="phone_no">Phone no.</string>
+    <string name="designation">Designation</string>
+    <string name="expetise">Field of Expertise</string>
 </resources>

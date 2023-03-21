@@ -2,25 +2,26 @@ package Model;
 
 public class Users
 {
-    private String Fname,name, username, phone, password, Email, Fid, search, designation, course, department, gender, year,section,faculty,school;
+    private String Fname,name, username, PhoneNo, password, Email, Fid, search, Designation, course, Department,Expertise, gender, year,section,faculty,school;
 
-    public Users(String Fname,String name,String username, String phone, String password, String Email, String Fid, String search, String designation, String course, String department, String gender, String year, String section, String faculty, String school) {
+    public Users(String Fname,String name,String username, String phoneno, String password, String Email,String Expertise, String Fid, String search, String Designation, String course, String department, String gender, String year, String section, String faculty, String school) {
         this.username = username;
-        this.phone = phone;
+        this.PhoneNo = phoneno;
         this.password = password;
         this.Email = Email;
         this.Fid = Fid;
         this.Fname = Fname;
         this.name = name;
         this.search = search;
-        this.designation = designation;
+        this.Designation = Designation;
         this.course = course;
-        this.department = department;
+        this.Department = department;
         this.gender = gender;
         this.year = year;
         this.section = section;
         this.school = school;
         this.faculty = faculty;
+        this.Expertise= Expertise;
 
     }
 
@@ -61,11 +62,11 @@ public class Users
     }
 
     public String getDesignation() {
-        return designation;
+        return Designation;
     }
 
     public void setDesignation(String designation) {
-        this.designation = designation;
+        this.Designation = Designation;
     }
 
     public String getSearch() {
@@ -92,12 +93,12 @@ public class Users
         this.username = username;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNo() {
+        return PhoneNo;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.PhoneNo = phone;
     }
 
     public String getPassword() {
@@ -125,11 +126,11 @@ public class Users
     }
 
     public String getDepartment() {
-        return department;
+        return Department;
     }
 
     public void setDepartment(String department) {
-        this.department = department;
+        this.Department = department;
     }
 
     public String getGender() {
@@ -147,4 +148,17 @@ public class Users
     public void setYear(String year) {
         this.year = year;
     }
+
+    public String getExpertise() {
+        return Expertise;
+    }
+
+    public void setExpertise(String expertise) {
+        this.Expertise = expertise;
+    }
+
+
+
+
+
 }
