@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -95,7 +98,25 @@ public class AboutActivity extends AppCompatActivity {
                 name= String.valueOf(et_name.getText());
                 desc= String.valueOf(et_desc.getText());
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Projects").child(""+gen());
+                String id = ""+gen();
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Projects").child(""+id);
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put("Id",id);
+                hashMap.put("Name",name);
+                hashMap.put("Desc",desc);
+
+                ref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(AboutActivity.this, "Project Added", Toast.LENGTH_SHORT).show();
+                        add_proj.setVisibility(GONE);
+                    }
+                });
+
+
 
             }
         });
