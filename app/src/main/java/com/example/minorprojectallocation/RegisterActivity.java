@@ -126,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     hashMap.put("PhoneNo",phoneno);
                                     hashMap.put("Expertise",expertise);
                                     hashMap.put("Designation",designation);
+                                    hashMap.put("Type", "Faculty");
 
 
                                     referenceProfile.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {

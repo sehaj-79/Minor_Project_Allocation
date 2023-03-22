@@ -18,6 +18,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
-    TextView textView;
+    TextView textView, textView2;
 
 
     @Override
@@ -35,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
+            String type,id;
+            id = currentUser.getUid();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(id).child("Type");
+
             Intent intent= new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
@@ -54,11 +60,21 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.login_button);
         progressBar =findViewById(R.id.progressBar);
         textView=findViewById(R.id.registerNow);
+        textView2=findViewById(R.id.registerNowStudent);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getApplicationContext(), StudentRegisterActivity.class);
                 startActivity(intent);
                 finish();
             }

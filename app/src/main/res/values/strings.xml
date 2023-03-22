@@ -7,14 +7,16 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="register">Register</string>
+    <string name="register_as_faculty">Register as Faculty</string>
+    <string name="register_as_student">Register as Student</string>
     <string name="Fac_name">Faculty Name</string>
     <string name="Fac_id">Faculty id</string>
     <string name="click_to_login">Click to Login.</string>
-    <string name="click_to_register">Click to Register</string>
+    <string name="click_to_register_as_faculty">Click to Register as Faculty</string>
     <string name="project_list">Project List</string>
     <string name="department">Department</string>
     <string name="phone_no">Phone no.</string>
     <string name="designation">Designation</string>
     <string name="expetise">Field of Expertise</string>
+    <string name="click_to_register_as_student">Click to Register as Student</string>
 </resources>
