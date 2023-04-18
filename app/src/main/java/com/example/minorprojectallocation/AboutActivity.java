@@ -130,6 +130,7 @@ public class AboutActivity extends AppCompatActivity {
                 hashMap.put("Name",name);
                 hashMap.put("Desc",desc);
                 hashMap.put("Fname",Fname);
+                hashMap.put("Seats","2");
 
                 ref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
