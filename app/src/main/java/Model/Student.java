@@ -13,6 +13,7 @@ public class Student {
         this.StudentDepartment = StudentDepartment;
         this.Year = Year;
         this.Section = Section;
+        this.Project = Project;
 
     }
 
