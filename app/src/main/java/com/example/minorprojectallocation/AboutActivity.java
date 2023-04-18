@@ -122,7 +122,7 @@ public class AboutActivity extends AppCompatActivity {
                 String id = ""+gen();
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Projects").child(""+id);
-                DatabaseReference refProj = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Projects").child(""+id);
+                DatabaseReference refProj = FirebaseDatabase.getInstance().getReference("Projects").child(""+id);
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
