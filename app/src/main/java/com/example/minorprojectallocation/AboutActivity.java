@@ -48,7 +48,7 @@ public class AboutActivity extends AppCompatActivity {
 
     TextView back,add;
     private TextView loading;
-    String load = "Loading";
+    String load = "Loading", Fname;
 
     LinearLayout add_proj;
 
@@ -59,6 +59,8 @@ public class AboutActivity extends AppCompatActivity {
     String desc, name;
 
     private List<Project_Model> projects;
+
+    Users faculty;
 
 
     @SuppressLint("MissingInflatedId")
@@ -82,6 +84,26 @@ public class AboutActivity extends AppCompatActivity {
         recyclerView_tickets.setHasFixedSize(true);
         recyclerView_tickets.setLayoutManager(new LinearLayoutManager(AboutActivity.this));
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Users user = dataSnapshot.getValue(Users.class);
+                assert user != null;
+
+                Fname = faculty.getFname();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,18 +123,27 @@ public class AboutActivity extends AppCompatActivity {
                 String id = ""+gen();
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Projects").child(""+id);
+                DatabaseReference refProj = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Projects").child(""+id);
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 hashMap.put("Id",id);
                 hashMap.put("Name",name);
                 hashMap.put("Desc",desc);
+                hashMap.put("Fname",Fname);
 
                 ref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(AboutActivity.this, "Project Added", Toast.LENGTH_SHORT).show();
                         add_proj.setVisibility(GONE);
+                    }
+                });
+
+                refProj.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        
                     }
                 });
 
@@ -129,7 +160,6 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         read_ticket_items();
 
     }
@@ -144,6 +174,7 @@ public class AboutActivity extends AppCompatActivity {
 
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Projects");
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override

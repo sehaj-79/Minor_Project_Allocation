@@ -2,12 +2,13 @@ package Model;
 
 public class Project_Model {
 
-    private String Id,Name,Desc;
+    private String Id,Name,Desc,Fname;
 
-    public Project_Model(String Id, String Name, String Desc){
+    public Project_Model(String Id, String Name, String Desc, String Fname){
         this.Id = Id;
         this.Name = Name;
         this.Desc = Desc;
+        this.Fname = Fname;
     }
 
     public Project_Model(){}
@@ -36,5 +37,12 @@ public class Project_Model {
         Name = name;
     }
 
+    public String getFname() {
+        return Fname;
+    }
+
+    public void setFname(String fname) {
+        Fname = fname;
+    }
 }
 
