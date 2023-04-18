@@ -9,7 +9,6 @@
     tools:context=".MainActivity">
 
 
-    /////////test
 
 
     <ImageView
@@ -324,6 +323,7 @@
             android:layout_marginLeft="2dp"
             android:layout_marginTop="12dp"
             android:paddingRight="20dp"
+            android:text="My Project : "
             android:textColor="#212121"
             android:textSize="15dp"
             app:layout_constraintStart_toStartOf="@id/home_line1"

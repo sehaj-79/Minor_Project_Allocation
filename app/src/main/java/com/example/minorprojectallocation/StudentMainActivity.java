@@ -27,7 +27,7 @@ import Model.Users;
 public class StudentMainActivity extends AppCompatActivity {
 
     ImageView imageView,logout;
-    TextView student_name,student_regno,tv_regno,tv_emailid,tv_studepartment, tv_stuphoneno;
+    TextView student_name,student_regno,tv_regno,tv_emailid,tv_studepartment, tv_stuphoneno, tv_project;
     ConstraintLayout home_splash,home_page;
     FrameLayout class_info,chats,about;
     FirebaseUser firebaseUser;
@@ -50,6 +50,7 @@ public class StudentMainActivity extends AppCompatActivity {
         tv_regno = findViewById(R.id.tv_regno);
         tv_studepartment = findViewById(R.id.tv_studepartment);
         tv_emailid = findViewById(R.id.tv_emailid);
+        tv_project = findViewById(R.id.tv_projectdetails);
 
 
         tv_stuphoneno=findViewById(R.id.tv_stuphoneno);
@@ -103,6 +104,14 @@ public class StudentMainActivity extends AppCompatActivity {
                 tv_regno.setText("Registration No: "+student.getSid());
                 tv_emailid.setText("Email: "+student.getStudentEmail());
                 tv_stuphoneno.setText("Phone No. : "+student.getStudentPhoneNo());
+
+                String project;
+                project = student.getProject();
+                if(project != null){
+                    tv_project.setText("My Project : "+project);
+                }
+                else
+                    tv_project.setText("My Project : Not Selected Yet.");
 
 
 

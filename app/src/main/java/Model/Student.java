@@ -3,8 +3,8 @@ package Model;
 public class Student {
 
 
-    private String StudentPhoneNo, Password, StudentEmail, StudentDepartment, Sid ,Sname, Year , Section;
-    public Student(String StudentPhoneNo, String Password, String Email,String StudentDepartment, String Sid, String Sname, String Year, String Section) {
+    private String StudentPhoneNo, Password, StudentEmail, StudentDepartment, Sid ,Sname, Year , Section, Project;
+    public Student(String StudentPhoneNo, String Password, String Email,String StudentDepartment, String Sid, String Sname, String Year, String Section, String Project) {
         this.StudentPhoneNo = StudentPhoneNo;
         this.Password = Password;
         this.StudentEmail = Email;
@@ -82,5 +82,13 @@ public class Student {
 
     public void setSection(String section) {
         Section = section;
+    }
+
+    public String getProject() {
+        return Project;
+    }
+
+    public void setProject(String project) {
+        Project = project;
     }
 }

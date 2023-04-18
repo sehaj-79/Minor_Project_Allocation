@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         tv_expertise=findViewById(R.id.tv_expertise);
         home_designation=findViewById(R.id.home_designation);
 
+
         tv_phoneno=findViewById(R.id.tv_phoneno);
 
         class_info = findViewById(R.id.classinfo);
