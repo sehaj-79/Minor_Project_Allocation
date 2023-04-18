@@ -56,7 +56,7 @@ public class StudentMainActivity extends AppCompatActivity {
 
         class_info = findViewById(R.id.classinfo);
         chats = findViewById(R.id.chats);
-        about = findViewById(R.id.about);
+
         home_splash=findViewById(R.id.home_splash);
         home_page= findViewById(R.id.home_page);
 
@@ -84,13 +84,7 @@ public class StudentMainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StudentMainActivity.this,AboutActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();

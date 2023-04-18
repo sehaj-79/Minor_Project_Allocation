@@ -17,6 +17,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vector_logout" />
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Logout"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/logout"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_splash"
@@ -333,6 +344,8 @@
             android:textSize="15dp"
             app:layout_constraintStart_toStartOf="@id/home_line1"
             app:layout_constraintTop_toBottomOf="@+id/tv_department" />
+
+
 
         <TextView
             android:id="@+id/home_designation"

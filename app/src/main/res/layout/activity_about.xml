@@ -63,7 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:hint="Enter Project Name"/>
+            android:hint="Enter Project Name"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"/>
 
         <EditText
             android:id="@+id/et_project_desc"
@@ -71,7 +73,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:hint="Enter Project Desc"/>
+            android:hint="Enter Project Desc"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"/>
 
 
         <Button
