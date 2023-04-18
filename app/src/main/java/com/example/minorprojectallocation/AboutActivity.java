@@ -60,7 +60,6 @@ public class AboutActivity extends AppCompatActivity {
 
     private List<Project_Model> projects;
 
-    Users faculty;
 
 
     @SuppressLint("MissingInflatedId")
@@ -94,7 +93,7 @@ public class AboutActivity extends AppCompatActivity {
                 Users user = dataSnapshot.getValue(Users.class);
                 assert user != null;
 
-                Fname = faculty.getFname();
+                Fname = user.getFname();
 
             }
 
@@ -143,7 +142,7 @@ public class AboutActivity extends AppCompatActivity {
                 refProj.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        
+
                     }
                 });
 
