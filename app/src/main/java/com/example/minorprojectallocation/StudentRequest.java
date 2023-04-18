@@ -1,10 +1,14 @@
 package com.example.minorprojectallocation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -19,40 +23,73 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import Adapter.Project_Adapter;
+import Adapter.StudentProjAdapter;
+import Model.Project_Model;
+
 public class StudentRequest extends AppCompatActivity {
+
+
     FirebaseUser firebaseUser;
-    private ListView mListView;
-    private DatabaseReference mDatabaseRef;
-    private List<String> mProjectsList;
-    private String id;
+    private RecyclerView recyclerView_tickets;
+
+    StudentProjAdapter project_adapter;
+
+    private List<Project_Model> projects;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_request);
 
+        recyclerView_tickets = findViewById(R.id.proj_recycler);
+
+
+        projects = new ArrayList<>();
+        recyclerView_tickets.setHasFixedSize(true);
+        recyclerView_tickets.setLayoutManager(new LinearLayoutManager(StudentRequest.this));
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        id = firebaseUser.getUid();
 
-        mListView = findViewById(R.id.listView);
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Students").child(firebaseUser.getUid()).child("Projects").child(""+id);;
-        mProjectsList = new ArrayList<>();
+        read_ticket_items();
 
-        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+    }
+
+    private void read_ticket_items() {
+
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Projects");
+
+
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot projectSnapshot : dataSnapshot.getChildren()) {
-                    String project = projectSnapshot.child("title").getValue(String.class);
-                    mProjectsList.add(project);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                projects.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Project_Model user = snapshot.getValue(Project_Model.class);
+
+                    if (user != null && user.getName() != null) {
+                        projects.add(user);
+                    }
+
+                    project_adapter = new StudentProjAdapter(StudentRequest.this, projects, false);
+                    recyclerView_tickets.setAdapter(project_adapter);
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(StudentRequest.this, android.R.layout.simple_list_item_1, mProjectsList);
-                mListView.setAdapter(adapter);
             }
 
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle error
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+
     }
+
+
 }
+
+

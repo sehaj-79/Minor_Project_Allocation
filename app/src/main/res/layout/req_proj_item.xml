@@ -1,58 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     android:background="@drawable/ticketbg1"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/item_constraint_delete"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/item_tv_suredelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Are you sure you want to cancel this ticket?"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.20" />
-
-
-        <Button
-            android:id="@+id/item_tv_nodelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_bg"
-            android:gravity="center"
-            android:text="NO"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="@+id/item_tv_suredelete"
-            app:layout_constraintTop_toBottomOf="@+id/item_tv_suredelete"
-            app:layout_constraintVertical_bias="0.40" />
-
-        <Button
-            android:id="@+id/item_tv_yesdelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:background="@drawable/button_bg"
-            android:gravity="center"
-            android:text="YES"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/item_tv_nodelete"
-            app:layout_constraintTop_toTopOf="@+id/item_tv_nodelete"
-            app:layout_constraintVertical_bias="0.40" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -71,7 +23,7 @@
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.20" />
+            app:layout_constraintVertical_bias="0.15" />
 
         <TextView
 
@@ -83,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_tv_booking"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.20" />
+            app:layout_constraintVertical_bias="0.15" />
 
         <TextView
 
@@ -95,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/item_tv_booking"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.40" />
+            app:layout_constraintVertical_bias="0.30" />
 
         <TextView
 
@@ -119,7 +71,7 @@
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="@+id/item_tv_name"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.60" />
+            app:layout_constraintVertical_bias="0.45" />
 
         <TextView
 
@@ -131,14 +83,37 @@
             app:layout_constraintStart_toEndOf="@id/item_tv_desc"
             app:layout_constraintTop_toTopOf="@id/item_tv_desc"/>
 
+        <TextView
+
+            android:id="@+id/item_tv_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seats Left : "
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="@+id/item_tv_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.60" />
+
+        <TextView
+
+            android:id="@+id/item_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loading"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/item_tv_seats"
+            app:layout_constraintTop_toTopOf="@id/item_tv_seats"/>
+
         <Button
 
-            android:id="@+id/item_delete"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:textSize="11dp"
-            app:backgroundTint="@null"
-            android:background="@drawable/trash"
+            android:id="@+id/item_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="8sp"
+            android:background="@color/black"
+            android:text="Request Project"
             app:layout_constraintVertical_bias="0.65"
             app:layout_constraintHorizontal_bias="0.90"
             app:layout_constraintBottom_toBottomOf="parent"
