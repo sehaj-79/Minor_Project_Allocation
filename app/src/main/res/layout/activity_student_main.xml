@@ -9,6 +9,9 @@
     tools:context=".MainActivity">
 
 
+    /////////test
+
+
     <ImageView
         android:id="@+id/logout"
         android:layout_width="30dp"
