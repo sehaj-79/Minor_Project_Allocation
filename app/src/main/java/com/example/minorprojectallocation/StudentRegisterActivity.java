@@ -31,7 +31,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
 
 
     TextInputEditText editTextStudentName, editTextRegistrationNo, editTextStudentEmail, editTextStudentPassword, editTextStudentDepartment, editTextStudentPhoneNo ;
-    Button buttonReg;
+    Button buttonStudentReg;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
@@ -40,13 +40,6 @@ public class StudentRegisterActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-
-        }
     }
 
     @Override
@@ -60,7 +53,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
         editTextStudentPassword = findViewById(R.id.student_password);
         editTextStudentDepartment= findViewById(R.id.student_department);
         editTextStudentPhoneNo= findViewById(R.id.student_phoneno);
-        buttonReg = findViewById(R.id.register_button);
+        buttonStudentReg = findViewById(R.id.registerstudent_button);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.loginNow);
 
@@ -74,7 +67,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
             }
         });
 
-        buttonReg.setOnClickListener(new View.OnClickListener() {
+        buttonStudentReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -113,7 +106,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
                                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
                                     String userId = firebaseUser.getUid();
 
-                                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Users").child(userId);
+                                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Student").child(userId);
                                     Toast.makeText(StudentRegisterActivity.this, referenceProfile.toString(), Toast.LENGTH_SHORT).show();
 
                                     HashMap<String, String> hashMap = new HashMap<>();
@@ -131,7 +124,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(StudentRegisterActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(StudentRegisterActivity.this, MainActivity.class);
+                                            Intent intent = new Intent(StudentRegisterActivity.this, StudentMainActivity.class);
                                             startActivity(intent);
                                         }
                                     });
