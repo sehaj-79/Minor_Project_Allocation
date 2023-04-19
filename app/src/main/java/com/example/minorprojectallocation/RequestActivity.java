@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import Adapter.RequestAdapter;
 import Adapter.StudentProjAdapter;
@@ -33,6 +34,8 @@ public class RequestActivity extends AppCompatActivity {
 
     private List<Project_Model> projects;
 
+    String id;
+
 
 
 
@@ -40,6 +43,8 @@ public class RequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
+
+        id = firebaseUser.getUid();
 
         recyclerView_tickets = findViewById(R.id.Request_recycler);
 
@@ -67,7 +72,7 @@ public class RequestActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Project_Model user = snapshot.getValue(Project_Model.class);
 
-                    if (user != null && user.getName() != null) {
+                    if (user != null && user.getName() != null && Objects.equals(id, user.getFid())) {
                         projects.add(user);
                     }
 
