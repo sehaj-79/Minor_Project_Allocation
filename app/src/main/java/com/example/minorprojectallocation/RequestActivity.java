@@ -56,7 +56,7 @@ public class RequestActivity extends AppCompatActivity {
     private void read_ticket_items() {
 
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Projects");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Request");
 
 
         reference.addValueEventListener(new ValueEventListener() {
