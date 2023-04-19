@@ -44,6 +44,8 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        firebaseUser  = FirebaseAuth.getInstance().getCurrentUser();
+
         id = firebaseUser.getUid();
 
         recyclerView_tickets = findViewById(R.id.Request_recycler);
