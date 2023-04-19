@@ -25,6 +25,8 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    //abcd
+
     TextInputEditText editTextFacultyName, editTextFacultyId, editTextEmail, editTextPassword, editTextDepartment, editTextPhoneNo, editTextDesignation, editTextFieldOfExpertise ;
     Button buttonReg;
     FirebaseAuth mAuth;
