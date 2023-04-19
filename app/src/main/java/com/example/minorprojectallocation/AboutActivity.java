@@ -131,6 +131,7 @@ public class AboutActivity extends AppCompatActivity {
                 hashMap.put("Desc",desc);
                 hashMap.put("Fname",Fname);
                 hashMap.put("Seats","2");
+                hashMap.put("Fid",firebaseUser.getUid());
 
                 ref.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

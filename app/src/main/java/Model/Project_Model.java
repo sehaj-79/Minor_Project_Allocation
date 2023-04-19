@@ -2,14 +2,16 @@ package Model;
 
 public class Project_Model {
 
-    private String Id,Name,Desc,Fname,Seats;
+    private String Id,Name,Desc,Fname,Seats,Fid,Sname;
 
-    public Project_Model(String Id, String Name, String Desc, String Fname,String Seats){
+    public Project_Model(String Id, String Fid, String Name, String Desc, String Fname,String Seats, String Sname){
         this.Id = Id;
         this.Name = Name;
         this.Desc = Desc;
         this.Fname = Fname;
+        this.Sname = Sname;
         this.Seats = Seats;
+        this.Fid = Fid;
     }
 
     public Project_Model(){}
@@ -52,6 +54,22 @@ public class Project_Model {
 
     public void setSeats(String seats) {
         Seats = seats;
+    }
+
+    public String getFid() {
+        return Fid;
+    }
+
+    public void setFid(String fid) {
+        Fid = fid;
+    }
+
+    public String getSname() {
+        return Sname;
+    }
+
+    public void setSname(String sname) {
+        Sname = sname;
     }
 }
 
