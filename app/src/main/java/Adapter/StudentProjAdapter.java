@@ -38,12 +38,15 @@ public class StudentProjAdapter extends RecyclerView.Adapter<StudentProjAdapter.
     private Context mContext;
     private List<Project_Model> mUsers;
 
+    private String Sname;
 
 
 
-    public StudentProjAdapter(Context mContext, List<Project_Model> mUsers, boolean b) {
+
+    public StudentProjAdapter(Context mContext, List<Project_Model> mUsers, boolean b, String Sname) {
         this.mUsers = mUsers;
         this.mContext = mContext;
+        this.Sname = Sname;
     }
 
 
@@ -67,31 +70,6 @@ public class StudentProjAdapter extends RecyclerView.Adapter<StudentProjAdapter.
 
 
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Student").child(firebaseUser.getUid());
-        final String[] Sname = new String[1];
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Student student = dataSnapshot.getValue(Student.class);
-
-                assert student != null;
-                Sname[0] = student.getSname();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-        assert firebaseUser != null;
-
-
-
 
         holder.project_name.setText(project_item.getName());
         holder.project_desc.setText(project_item.getDesc());
@@ -111,7 +89,7 @@ public class StudentProjAdapter extends RecyclerView.Adapter<StudentProjAdapter.
 
                 hashMap.put("Id",project_item.getId());
                 hashMap.put("Name",project_item.getName());
-                hashMap.put("Sname", Sname[0]);
+                hashMap.put("Sname", Sname);
                 hashMap.put("Fname",project_item.getFname());
                 hashMap.put("Seats","2");
                 hashMap.put("Fid",Fid);

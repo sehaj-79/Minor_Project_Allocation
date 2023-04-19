@@ -26,6 +26,7 @@ import java.util.List;
 import Adapter.Project_Adapter;
 import Adapter.StudentProjAdapter;
 import Model.Project_Model;
+import Model.Student;
 
 public class StudentRequest extends AppCompatActivity {
 
@@ -36,6 +37,8 @@ public class StudentRequest extends AppCompatActivity {
     StudentProjAdapter project_adapter;
 
     private List<Project_Model> projects;
+
+    String Sname;
 
 
     @Override
@@ -50,7 +53,25 @@ public class StudentRequest extends AppCompatActivity {
         recyclerView_tickets.setHasFixedSize(true);
         recyclerView_tickets.setLayoutManager(new LinearLayoutManager(StudentRequest.this));
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Student").child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Student student = dataSnapshot.getValue(Student.class);
+
+                assert student != null;
+                Sname = student.getSname();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         read_ticket_items();
 
@@ -74,7 +95,7 @@ public class StudentRequest extends AppCompatActivity {
                         projects.add(user);
                     }
 
-                    project_adapter = new StudentProjAdapter(StudentRequest.this, projects, false);
+                    project_adapter = new StudentProjAdapter(StudentRequest.this, projects, false , Sname);
                     recyclerView_tickets.setAdapter(project_adapter);
                 }
             }
